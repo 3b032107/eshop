@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,8 @@ Route::post('Products', [ProductController::class, 'store']);
 Route::get('Products/{Product}/edit', [ProductController::class, 'edit']);
 Route::patch('Products/{Product}', [ProductController::class, 'update']);
 Route::delete('Products/{Product}', [ProductController::class, 'destroy']);
+
+Route::resource('cart_items',CartItemController::class)->middleware(['auth','verified']);
 
 
 Route::get('/dashboard', function () {
