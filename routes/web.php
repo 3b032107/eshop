@@ -33,6 +33,13 @@ products.edit      編輯products頁面
 products.update    更新products資料
 products.destroy   刪除products資料
 */
-Route::resource('Products',ProductController::class)->only([
-    'index','show','store','update','destroy'
-]);
+//Route::resource('Products',ProductController::class)->only([
+//    'index','show','store','update','destroy'
+//]);
+Route::get('Products',[ProductController::class,'index']);
+Route::get('Products/create',[ProductController::class,'create']);
+Route::get('Products/{Product}',[ProductController::class,'show']);
+Route::post('Products',[ProductController::class,'store']);
+Route::get('Products/{Product}/edit',[ProductController::class,'edit']);
+Route::patch('Products/{Product}',[ProductController::class,'update']);
+Route::delete('Products/{Product}',[ProductController::class,'destroy']);
