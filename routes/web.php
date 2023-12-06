@@ -33,5 +33,6 @@ products.edit      編輯products頁面
 products.update    更新products資料
 products.destroy   刪除products資料
 */
-Route::resource('Products',ProductController::class);
-
+Route::resource('Products',ProductController::class)->only([
+    'index','show','store','update','destroy'
+]);
