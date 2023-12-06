@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +51,8 @@ Route::delete('Products/{Product}', [ProductController::class, 'destroy']);
 
 Route::resource('cart_items',CartItemController::class)->middleware(['auth','verified']);
 
+Route::get('orders',[OrderController::class,'index'])->middleware(['auth','verified']);
+Route::get('orders/{order}',[OrderController::class,'show'])->middleware(['auth','verified'])->name('orders.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
